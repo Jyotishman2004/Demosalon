@@ -115,6 +115,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
 }
 
 html {
@@ -334,6 +335,7 @@ ul, ol {
   display: flex;
   align-items: center;
   gap: var(--space-sm);
+  position: relative;
   z-index: 1001;
 }
 
@@ -401,6 +403,7 @@ ul, ol {
   gap: 5px;
   width: 28px;
   height: 20px;
+  position: relative;
   z-index: 1001;
 }
 
