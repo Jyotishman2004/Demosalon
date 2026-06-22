@@ -218,6 +218,48 @@ document.addEventListener('DOMContentLoaded', () => {
 
   buildMarquee();
 
+  // ─── Menu Tabs Logic ──────────────────────────────────────
+  const tabBtns = document.querySelectorAll('.tab-btn');
+  const tabPanes = document.querySelectorAll('.tab-pane');
+
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      // Remove active class from all buttons and panes
+      tabBtns.forEach(b => b.classList.remove('active'));
+      tabPanes.forEach(p => p.classList.remove('active'));
+      
+      // Add active class to clicked button
+      btn.classList.add('active');
+      
+      // Show corresponding pane
+      const targetId = btn.getAttribute('data-target');
+      const targetPane = document.getElementById(targetId);
+      if (targetPane) {
+        targetPane.classList.add('active');
+      }
+    });
+  });
+
+  // ─── Accordion Logic ──────────────────────────────────────
+  const accordionHeaders = document.querySelectorAll('.accordion-header');
+
+  accordionHeaders.forEach(header => {
+    header.addEventListener('click', () => {
+      const item = header.parentElement;
+      const content = item.querySelector('.accordion-content');
+      
+      // Toggle active class on the item
+      item.classList.toggle('active');
+      
+      // Animate max-height
+      if (item.classList.contains('active')) {
+        content.style.maxHeight = content.scrollHeight + "px";
+      } else {
+        content.style.maxHeight = 0;
+      }
+    });
+  });
+
   // ─── Booking Form ─────────────────────────────────────────
   const bookingForm = document.getElementById('booking-form');
   const formSuccess = document.getElementById('form-success');
